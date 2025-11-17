@@ -19,7 +19,7 @@ java -jar target/*.jar
 
 (On Windows, or if your shell doesn't expand the glob, you might need to specify the JAR file name
 
-explicitly on the command line at the end there.)
+explicitly on the command line at the end there.
 
 You can then access the Petclinic at [http://localhost:8080/](http://localhost:8080/).
 
