@@ -17,9 +17,7 @@ cd spring-petclinic
 java -jar target/*.jar
 ```
 
-(On Windows, or if your shell doesn't expa
-
-nd the glob, you might need to specify the JAR file name explicitly on the command line at the end there.)
+(On Windows, or if your shell doesn't expand the glob, you might need to specify the JAR file name explicitly on the command line at the end there.)
 
 You can then access the Petclinic at [http://localhost:8080/](http://localhost:8080/).
 
@@ -110,25 +108,28 @@ The following items should be installed in your system:
    ```bash
    git clone https://github.com/spring-projects/spring-petclinic.git
    ```
+
 2. Inside Eclipse or STS:
 
    Open the project via `File -> Import -> Maven -> Existing Maven project`, then select the root directory of the cloned repo.
 
    Then either build on the command line `./mvnw generate-resources` or use the Eclipse launcher (right-click on project and `Run As -> Maven install`) to generate the CSS. Run the application's main method by right-clicking on it and choosing `Run As -> Java Application`.
+
 3. Inside IntelliJ IDEA:
 
    In the main menu, choose `File -> Open` and select the Petclinic [pom.xml](pom.xml). Click on the `Open` button.
 
    - CSS files are generated from the Maven build. You can build them on the command line `./mvnw generate-resources` or right-click on the `spring-petclinic` project then `Maven -> Generates sources and Update Folders`.
    - A run configuration named `PetClinicApplication` should have been created for you if you're using a recent Ultimate version. Otherwise, run the application by right-clicking on the `PetClinicApplication` main class and choosing `Run 'PetClinicApplication'`.
+
 4. Navigate to the Petclinic
 
    Visit [http://localhost:8080](http://localhost:8080) in your browser.
 
 ## Looking for something in particular?
 
-| Spring Boot Configuration | Class or Java property files                                                                                                                                        |
-| ------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| Spring Boot Configuration | Class or Java property files                                                                                                                                           |
+| ------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | The Main Class            | [PetClinicApplication](https://github.com/spring-projects/spring-petclinic/blob/main/src/main/java/org/springframework/samples/petclinic/PetClinicApplication.java)    |
 | Properties Files          | [application.properties](https://github.com/spring-projects/spring-petclinic/blob/main/src/main/resources)                                                             |
 | Caching                   | [CacheConfiguration](https://github.com/spring-projects/spring-petclinic/blob/main/src/main/java/org/springframework/samples/petclinic/system/CacheConfiguration.java) |
@@ -145,17 +146,17 @@ GitHub org is the "canonical" implementation based on Spring Boot and Thymeleaf.
 One of the best parts about working on the Spring Petclinic application is that we have the opportunity to work in direct contact with many Open Source projects. We found bugs/suggested improvements on various topics such as Spring, Spring Data, Bean Validation and even Eclipse! In many cases, they've been fixed/implemented in just a few days.
 Here is a list of them:
 
-| Name                                                                                          | Issue                                                                                                                                                     |
-| --------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| Name                                                                                          | Issue                                                                                                                                                           |
+| --------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | Spring JDBC: simplify usage of NamedParameterJdbcTemplate                                     | [SPR-10256](https://github.com/spring-projects/spring-framework/issues/14889) and [SPR-10257](https://github.com/spring-projects/spring-framework/issues/14890) |
 | Bean Validation / Hibernate Validator: simplify Maven dependencies and backward compatibility | [HV-790](https://hibernate.atlassian.net/browse/HV-790) and [HV-792](https://hibernate.atlassian.net/browse/HV-792)                                             |
-| Spring Data: provide more flexibility when working with JPQL queries                          | [DATAJPA-292](https://github.com/spring-projects/spring-data-jpa/issues/704)                                                                                 |
+| Spring Data: provide more flexibility when working with JPQL queries                          | [DATAJPA-292](https://github.com/spring-projects/spring-data-jpa/issues/704)                                                                                    |
 
 ## Contributing
 
 The [issue tracker](https://github.com/spring-projects/spring-petclinic/issues) is the preferred channel for bug reports, feature requests and submitting pull requests.
 
-For pull requests, editor preferences are available in the [editor config](.editorconfig) for easy use in common text editors. Read more and download plugins at [https://editorconfig.org](https://editorconfig.org). All commits must include a __Signed-off-by__ trailer at the end of each commit message to indicate that the contributor agrees to the Developer Certificate of Origin.
+For pull requests, editor preferences are available in the [editor config](.editorconfig) for easy use in common text editors. Read more and download plugins at [https://editorconfig.org](https://editorconfig.org). All commits must include a **Signed-off-by** trailer at the end of each commit message to indicate that the contributor agrees to the Developer Certificate of Origin.
 For additional details, please refer to the blog post [Hello DCO, Goodbye CLA: Simplifying Contributions to Spring](https://spring.io/blog/2025/01/06/hello-dco-goodbye-cla-simplifying-contributions-to-spring).
 
 ## License
