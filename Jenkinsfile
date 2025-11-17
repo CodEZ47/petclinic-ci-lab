@@ -1,9 +1,33 @@
 pipeline {
-    agent any
+    agent {
+        kubernetes {
+            label 'maven'
+        }
+    }
+
+    triggers {
+        githubPush()
+    }
+
     stages {
-        stage('Build') {
+
+        stage('Checkout') {
             steps {
-                sh 'mvn clean package -DskipTests -Dcheckstyle.skip'
+                checkout scm
+            }
+        }
+
+        stage('Build Maven') {
+            steps {
+                container('maven') {
+                    sh 'mvn -B -DskipTests clean package'
+                }
+            }
+        }
+
+        stage('Archive Artifact') {
+            steps {
+                archiveArtifacts artifacts: '**/target/*.jar', fingerprint: true
             }
         }
     }
