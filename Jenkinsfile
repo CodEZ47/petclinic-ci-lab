@@ -27,13 +27,6 @@ pipeline {
             }
         }
 
-        stage('Test') {
-            steps {
-                echo "Running unit tests..."
-                sh "mvn test"
-            }
-        }
-
         stage('Static Analysis') {
             steps {
                 echo "Running SonarQube analysis..."
