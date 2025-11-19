@@ -73,14 +73,17 @@ pipeline {
         stage('Deploy to Kubernetes') {
             steps {
                 container('kubectl') {
-                    echo "Deploying Petclinic and MySQL..."
-                    sh """
-                        kubectl apply -f k8s/mysql/
-                        kubectl apply -f k8s/petclinic/
-                    """
+                    withCredentials([file(credentialsId: 'kubeconfig', variable: 'KUBECONFIG')]) {
+                        echo "Deploying Petclinic and MySQL..."
+                        sh """
+                            kubectl --kubeconfig=\$KUBECONFIG apply -f k8s/mysql/
+                            kubectl --kubeconfig=\$KUBECONFIG apply -f k8s/petclinic/
+                        """
+                    }
                 }
             }
         }
+
     }
 
     
