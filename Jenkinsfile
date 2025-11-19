@@ -71,9 +71,22 @@ pipeline {
         }
     }
 
+    stage('Deploy to Kubernetes') {
+        steps {
+            container('kubectl') {
+                echo "Deploying Petclinic and MySQL..."
+                sh """
+                    kubectl apply -f k8s/mysql/
+                    kubectl apply -f k8s/petclinic/
+                """
+            }
+        }
+    }
+
+
     post {
         success {
-            echo "Build & push completed successfully!"
+            echo "Pipeline completed successfully!"
         }
         failure {
             echo "Pipeline failed. Check logs."
