@@ -1,15 +1,15 @@
 pipeline {
     agent {
         kubernetes {
-            inheritFrom 'mvn-builder'     //pod template name
-            defaultContainer 'maven'       // Maven container for build/test
+            inheritFrom 'mvn-builder'     
+            defaultContainer 'maven'      
         }
     }
 
     environment {
-        DOCKER_IMAGE = "amank47/petclinic"      // Updated Docker Hub repo
+        DOCKER_IMAGE = "amank47/petclinic"      
         DOCKERHUB_CREDS = credentials('dockerhub')
-        DOCKER_HOST = "tcp://localhost:2375"    // docker client -> dind
+        DOCKER_HOST = "tcp://localhost:2375"    
     }
 
     stages {
@@ -27,21 +27,27 @@ pipeline {
             }
         }
 
-        // stage('Test') {
-        //     steps {
-        //         echo "Running unit tests..."
-        //         sh "mvn test"
-        //     }
-        // }
+        stage('Test') {
+            steps {
+                echo "Running unit tests..."
+                sh "mvn test"
+            }
+        }
 
-        // stage('Static Analysis') {
-        //     steps {
-        //         echo "Running SonarQube analysis..."
-        //         withSonarQubeEnv('sonarqube') {
-        //             sh "mvn sonar:sonar -Dsonar.projectKey=petclinic"
-        //         }
-        //     }
-        // }
+        stage('Static Analysis') {
+            steps {
+                echo "Running SonarQube analysis..."
+                withSonarQubeEnv('sonarqube') {
+                    sh """
+                        mvn sonar:sonar \
+                            -Dsonar.projectKey=petclinic \
+                            -Dsonar.host.url=$SONAR_HOST_URL \
+                            -Dsonar.login=$SONAR_AUTH_TOKEN
+                    """
+                }
+            }
+        }
+
 
         stage('Build Docker Image') {
             steps {
