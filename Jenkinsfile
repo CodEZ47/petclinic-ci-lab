@@ -69,19 +69,21 @@ pipeline {
                 }
             }
         }
-    }
 
-    stage('Deploy to Kubernetes') {
-        steps {
-            container('kubectl') {
-                echo "Deploying Petclinic and MySQL..."
-                sh """
-                    kubectl apply -f k8s/mysql/
-                    kubectl apply -f k8s/petclinic/
-                """
+        stage('Deploy to Kubernetes') {
+            steps {
+                container('kubectl') {
+                    echo "Deploying Petclinic and MySQL..."
+                    sh """
+                        kubectl apply -f k8s/mysql/
+                        kubectl apply -f k8s/petclinic/
+                    """
+                }
             }
         }
     }
+
+    
 
 
     post {
